@@ -4,7 +4,7 @@
 if ! [ -e /etc/pdns/conf.d/backend.conf ]; then
 	if [ -n "$BACKEND" ]; then
 		if [ "$BACKEND" = "sqlite" ]; then
-			mv /etc/pdns/conf.d/default.conf.d/sqlite.conf /etc/pdns/conf.d/backend.conf
+			mv /etc/pdns/default.conf.d/sqlite.conf /etc/pdns/conf.d/backend.conf
 		fi
 	fi
 	if [ -n "$APIKEY" ]; then
@@ -20,4 +20,4 @@ if ! [ -e /etc/pdns/conf.d/backend.conf ]; then
 	exit 1
 fi
 
-/usr/sbin/pdns_server
+/usr/sbin/pdns_server --config-dir=/etc/pdns

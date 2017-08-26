@@ -3,7 +3,7 @@ MAINTAINER Chris Batis <clbatis@taosnet.com>
 
 RUN apk --no-cache add pdns pdns-backend-sqlite3 sqlite
 
-COPY pdns /etc/
+COPY pdns /etc/pdns/
 COPY docker-pdns.sh /docker-pdns.sh
 
 ENTRYPOINT ["/docker-pdns.sh"]

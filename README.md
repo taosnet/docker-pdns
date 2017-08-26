@@ -13,7 +13,7 @@ docker run --name mydns -d -p 53:53/udp -p 53:53/tcp taosnet/pdns
 
 If you want to enable the REST API, specify the **APIKEY** environment variable with the value that you want your key to be.
 ```
-docker run --name mydns -d -p 53:53/udp -p 53:53/tcp -p 8081:8081 -e APIKEY=MYAPIKEY taosnet/pdns
+docker run --name mydns -d -p 53:53/udp -p 53:53/tcp -p 8081:8081 -e APIKEY=MYAPIKEY -e WEBKEY=MYWEBKEY taosnet/pdns
 ```
 
 If you want to use a data volume for changes with the SQLite backend:
@@ -23,6 +23,7 @@ docker run --name mydns -d -p 53:53/udp -p 53:53/tcp -v mydns-db:/etc/pdns/db ta
 
 ## Environmental Variables
 
-* **APIKEY** is the key you wish to use to access the REST API on port 8081. If this variable is not specified, the REST API is disabled.
+* **APIKEY** is the key you wish to use to access the REST API on port 8081. If this variable is not specified, the REST API is disabled. Value cannot contain */*.
 * **BACKEND** specifies the backend you wish to use. Defaults to sqlite. Currently supported backends are:
   * *sqlite* uses SQLite3 as the backend. Database is stored in */etc/pdns/db/zones.db*.
+* **WEBKEY** specifies a key to use for the Webserver. Not required, but **should** be specified if **APIKEY** is used.

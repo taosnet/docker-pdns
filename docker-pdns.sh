@@ -24,6 +24,9 @@ if ! [ -e /etc/pdns/conf.d/backend.conf ]; then
 	if [ -n "$SMTP" ]; then
 		sed "s/default-soa-mail=DIRECTOR/default-soa-mail=$SMTP/" </etc/pdns/default.conf.d/soa.conf >/etc/pdns/conf.d/soa.conf
 	fi
+	if [ -n "$SOA_NAME" ]; then
+		echo "default-soa-name=$SOA_NAME" >>/etc/pdns/conf.d/soa.conf
+	fi
 fi
 
 if ! [ -e /etc/pdns/conf.d/backend.conf ]; then

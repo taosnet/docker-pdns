@@ -30,4 +30,5 @@ docker run --name mydns -d -p 53:53/udp -p 53:53/tcp -v mydns-db:/etc/pdns/db ta
   * *sqlite* uses SQLite3 as the backend. Database is stored in */etc/pdns/db/zones.db*.
 * **MASTER** enable the server to serve as the master for a zone.
 * **SLAVE** enables the server to be a slave for a zone. Enabled by default, disable by setting to *no*.
+* **SMTP** sets the default smtp redirector for the SOA record of new zones.
 * **WEBKEY** specifies a key to use for the Webserver. Not required, but **should** be specified if **APIKEY** is used.

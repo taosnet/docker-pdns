@@ -21,6 +21,9 @@ if ! [ -e /etc/pdns/conf.d/backend.conf ]; then
 	if [ -z "$SLAVE" ] || [ "$SLAVE" = "yes" ]; then
 		mv /etc/pdns/default.conf.d/slave.conf /etc/pdns/conf.d/slave.conf
 	fi
+	if [ -n "$SMTP" ]; then
+		sed "s/smtpredirector=DIRECTOR/smtpredirector=$SMTP/" </etc/pdns/default.conf.d/soa.conf >/etc/pdns/conf.d/soa.conf
+	fi
 fi
 
 if ! [ -e /etc/pdns/conf.d/backend.conf ]; then

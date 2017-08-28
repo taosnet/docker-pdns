@@ -14,6 +14,13 @@ if ! [ -e /etc/pdns/conf.d/backend.conf ]; then
 			sed -i "s/DNSW3bP4ssword/$WEBKEY/" /etc/pdns/conf.d/api.conf
 		fi
 	fi
+	if [ -n "$MASTER" ] && [ "$MASTER" = "yes" ]; then
+		mv /etc/pdns/default.conf.d/master.conf /etc/pdns/conf.d/master.conf
+	fi
+	# Defaults to slave mode
+	if [ -z "$SLAVE" ] || [ "$SLAVE" = "yes" ]; then
+		mv /etc/pdns/default.conf.d/slave.conf /etc/pdns/conf.d/slave.conf
+	fi
 fi
 
 if ! [ -e /etc/pdns/conf.d/backend.conf ]; then

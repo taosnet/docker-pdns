@@ -22,7 +22,7 @@ if ! [ -e /etc/pdns/conf.d/backend.conf ]; then
 		mv /etc/pdns/default.conf.d/slave.conf /etc/pdns/conf.d/slave.conf
 	fi
 	if [ -n "$SMTP" ]; then
-		sed "s/smtpredirector=DIRECTOR/smtpredirector=$SMTP/" </etc/pdns/default.conf.d/soa.conf >/etc/pdns/conf.d/soa.conf
+		sed "s/default-soa-mail=DIRECTOR/default-soa-mail=$SMTP/" </etc/pdns/default.conf.d/soa.conf >/etc/pdns/conf.d/soa.conf
 	fi
 fi
 

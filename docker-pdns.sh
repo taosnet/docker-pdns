@@ -5,6 +5,7 @@ if ! [ -e /etc/pdns/conf.d/backend.conf ]; then
 	if [ -n "$BACKEND" ]; then
 		if [ "$BACKEND" = "sqlite" ]; then
 			mv /etc/pdns/default.conf.d/sqlite.conf /etc/pdns/conf.d/backend.conf
+			chown -R pdns.pdns /etc/pdns/db
 		fi
 	fi
 	if [ -n "$APIKEY" ]; then

@@ -10,17 +10,17 @@ Configuration is stored in /etc/pdns if you choose to use a data volume for the 
 
 To run a simple DNS server:
 ```
-docker run --name mydns -d -p 53:53/udp -p 53:53/tcp taosnet/pdns
+docker run --name mydns -d -p 53:53/udp -p 53:53/tcp taosnet/pdns_server
 ```
 
 If you want to enable the REST API, specify the **APIKEY** environment variable with the value that you want your key to be.
 ```
-docker run --name mydns -d -p 53:53/udp -p 53:53/tcp -p 8081:8081 -e APIKEY=MYAPIKEY -e WEBKEY=MYWEBKEY taosnet/pdns
+docker run --name mydns -d -p 53:53/udp -p 53:53/tcp -p 8081:8081 -e APIKEY=MYAPIKEY -e WEBKEY=MYWEBKEY taosnet/pdns_server
 ```
 
 If you want to use a data volume for changes with the SQLite backend:
 ```
-docker run --name mydns -d -p 53:53/udp -p 53:53/tcp -v mydns-db:/etc/pdns/db taosnet/pdns
+docker run --name mydns -d -p 53:53/udp -p 53:53/tcp -v mydns-db:/etc/pdns/db taosnet/pdns_server
 ```
 
 ## Environmental Variables

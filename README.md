@@ -28,7 +28,8 @@ docker run --name mydns -d -p 53:53/udp -p 53:53/tcp -v mydns-db:/etc/pdns/db ta
 * **APIKEY** is the key you wish to use to access the REST API on port 8081. If this variable is not specified, the REST API is disabled. Value cannot contain */*.
 * **BACKEND** specifies the backend you wish to use. Defaults to sqlite. Currently supported backends are:
   * *sqlite* uses SQLite3 as the backend. Database is stored in */etc/pdns/db/zones.db*.
-* **MASTER** enable the server to serve as the master for a zone.
+* **MASTER** enable the server to serve as the master for a zone by setting to *yes*.
+  * **AXFR** specifies the IP addresses to allow zone transfers for. Only used if **MASTER** is set to *yes*.
 * **SLAVE** enables the server to be a slave for a zone. Enabled by default, disable by setting to *no*.
 * **SMTP** sets the default smtp redirector for the SOA record of new zones.
 * **SOA_NAME** sets the default name for the SOA record of new zones.

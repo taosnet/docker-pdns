@@ -16,6 +16,9 @@ if ! [ -e /etc/pdns/conf.d/backend.conf ]; then
 	fi
 	if [ -n "$MASTER" ] && [ "$MASTER" = "yes" ]; then
 		mv /etc/pdns/default.conf.d/master.conf /etc/pdns/conf.d/master.conf
+		if [ -n "$AXFR" ]; then
+			echo allow-axfr-ips="$AXFR" >>/etc/pdns/conf.d/master.conf
+		fi
 	fi
 	# Defaults to slave mode
 	if [ -z "$SLAVE" ] || [ "$SLAVE" = "yes" ]; then

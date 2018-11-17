@@ -5,6 +5,9 @@ if ! [ -e /etc/pdns/conf.d/backend.conf ]; then
 	if [ -n "$BACKEND" ]; then
 		if [ "$BACKEND" = "sqlite" ]; then
 			mv /etc/pdns/default.conf.d/sqlite.conf /etc/pdns/conf.d/backend.conf
+			if ! [ -e /etc/pdns/db/zones.db ]; then
+				cp /etc/pdns/db.init/zones.db /etc/pdns/db/zones.db
+			fi
 			chown -R pdns.pdns /etc/pdns/db
 		fi
 	fi
